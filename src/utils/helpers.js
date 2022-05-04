@@ -1,5 +1,4 @@
-import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
-// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 export function drawLine(ctx, x1, y1, x2, y2) {
   ctx.beginPath();
@@ -9,18 +8,15 @@ export function drawLine(ctx, x1, y1, x2, y2) {
 }
 
 export function loadModel(file) {
-  console.log("file", file);
   return new Promise((res, rej) => {
-    const loader = new OBJLoader();
+    const loader = new GLTFLoader();
     loader.load(
       file,
       function (root) {
-        console.log("root: ", root);
-        res(root);
+        res(root.scene);
       },
       undefined,
       function (error) {
-        console.log("error: ", error);
         rej(error);
       }
     );

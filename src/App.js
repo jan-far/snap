@@ -3,6 +3,8 @@ import * as THREE from "three";
 import "./App.css";
 import { drawLine, loadModel, setText, setupWebcam } from "./utils/helpers";
 import { load, SupportedPackages } from "@tensorflow-models/face-landmarks-detection";
+import "@tensorflow/tfjs-backend-cpu";
+import "@tensorflow/tfjs-backend-webgl";
 
 // let output = null;
 let model = null;
@@ -131,7 +133,7 @@ function App() {
 
       camera.lookAt(videoWidth / 2, -videoHeight / 2, 0);
 
-      glasses = await loadModel("heartGlasses.obj");
+      glasses = await loadModel("heart_glasses.gltf");
       scene.add(glasses);
 
       setText("Loaded!");
